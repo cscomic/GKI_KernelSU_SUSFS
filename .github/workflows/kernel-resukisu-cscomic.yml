@@ -22,7 +22,7 @@ on:
           - android14
           - android15
           - android16
-        default: android12
+        default: android13
       kernel_version:
         description: "内核版本"
         required: true
@@ -38,12 +38,12 @@ on:
         description: "子版本号 (如 66, 198, X)"
         required: true
         type: string
-        default: "207"
+        default: "X"
       os_patch_level:
         description: "安全补丁级别 (如 2022-01, lts)"
         required: true
         type: string
-        default: "2025-12"
+        default: "lts"
       revision:
         description: "修订版本 (如 r11, 仅 5.10 需要)"
         required: false
@@ -61,13 +61,14 @@ on:
       # ==================== 可选配置 ====================
       version:
         description: "自定义版本名 (可选)"
-        required: false
+        required: true
         type: string
+        default: "5.15.189-android13-8-00016-g51bba4309aac-ab14546557"
       build_time:
         description: "自定义构建时间 (可选，N或留空=当前UTC)"
-        required: false
+        required: true
         type: string
-        default: "Sun Dec 01 08:10:00 UTC 2024"
+        default: "Fri Dec 5 10:55:34 UTC 2025"
 
       # ==================== 功能开关 ====================
       use_zram:
