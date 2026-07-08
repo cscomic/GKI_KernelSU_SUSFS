@@ -70,11 +70,6 @@ on:
         default: "Sun Dec 01 08:10:00 UTC 2024"
 
       # ==================== 功能开关 ====================
-      use_kpm:
-        description: "KPM 内核补丁模块支持"
-        required: true
-        type: boolean
-        default: true
       use_zram:
         description: "启用 ZRAM 增强算法"
         required: true
@@ -130,7 +125,6 @@ jobs:
       ksu_variant: "ReSukiSU"
       ksu_branch: ${{ inputs.kernelsu_branch }}
       version: ${{ inputs.version || '' }}
-      use_kpm: ${{ inputs.use_kpm }}
       use_zram: ${{ inputs.use_zram }}
       use_bbg: ${{ inputs.use_bbg }}
       use_rekernel: ${{ inputs.use_rekernel || false }}
