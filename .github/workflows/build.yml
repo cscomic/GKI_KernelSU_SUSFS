@@ -1080,7 +1080,13 @@ jobs:
 
           # 准备驱动源码
           mkdir -p common/drivers/rekernel
-          cp "$TMP_REKERNEL/LKM-Source/rekernel.c" common/drivers/rekernel/
+          # cp "$TMP_REKERNEL/LKM-Source/rekernel.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_binder.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_netlink.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_netfilter.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_signal.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_main.c" common/drivers/rekernel/
+          cp "$TMP_REKERNEL/LKM-Source/rekernel_internal.h" common/drivers/rekernel/
           cp "$TMP_REKERNEL/LKM-Source/rekernel.h" common/drivers/rekernel/
 
           # 生成构建配置
