@@ -61,14 +61,14 @@ on:
       # ==================== 可选配置 ====================
       version:
         description: "自定义版本名 (可选)"
-        required: true
+        required: false
         type: string
         default: "5.15.189-android13-8-00016-g51bba4309aac-ab14546557"
       build_time:
         description: "自定义构建时间 (可选，N或留空=当前UTC)"
-        required: true
+        required: false
         type: string
-        default: "Fri Dec 05 10:55:34 UTC 2025"
+        default: "Fri Dec 5 10:55:34 UTC 2025"
 
       # ==================== 功能开关 ====================
       use_zram:
@@ -83,12 +83,17 @@ on:
         default: true
       use_rekernel:
         description: "启用 Re-Kernel 驱动"
-        required: true
+        required: false
+        type: boolean
+        default: true
+      cve_2026_43499_patch:
+        description: "应用 CVE-2026-43499 rtmutex 修复链"
+        required: false
         type: boolean
         default: true
       cancel_susfs:
         description: "禁用 SUSFS"
-        required: false
+        required: true
         type: boolean
         default: false
       supp_op:
@@ -98,7 +103,7 @@ on:
         default: false
       droidspaces:
         description: "Droidspaces 容器支持 (5.10~6.6: 槽位补丁, 6.12: 开/关)"
-        required: true
+        required: false
         type: choice
         options:
           - "off"
@@ -108,7 +113,7 @@ on:
         default: "678"
       droidspaces_ntsync:
         description: "启用 Droidspaces 容器 NTSync 支持（需启用 Droidspaces）"
-        required: true
+        required: false
         type: boolean
         default: true
 
@@ -130,6 +135,7 @@ jobs:
       use_zram: ${{ inputs.use_zram }}
       use_bbg: ${{ inputs.use_bbg }}
       use_rekernel: ${{ inputs.use_rekernel || false }}
+      cve_2026_43499_patch: ${{ inputs.cve_2026_43499_patch }}
       supp_op: ${{ inputs.supp_op || false }}
       enable_susfs: ${{ !inputs.cancel_susfs }}
       droidspaces: ${{ inputs.droidspaces || 'off' }}
