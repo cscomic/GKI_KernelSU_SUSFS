@@ -17,6 +17,11 @@ on:
         required: false
         type: string
         default: ""
+      clean_build:
+        description: "清洁构建 (禁用所有附加功能)"
+        required: false
+        type: boolean
+        default: false
       version:
         description: "自定义版本名 (可选)"
         required: false
@@ -73,6 +78,10 @@ on:
         default: false
   workflow_call:
     inputs:
+      clean_build:
+        required: false
+        type: boolean
+        default: false
       # KernelSU 变体固定为 ReSukiSU
       kernelsu_branch:
         required: true
@@ -152,6 +161,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
+      clean_build: ${{ inputs.clean_build }}
       android_version: "android13"
       kernel_version: "5.15"
       sub_level: ${{ matrix.sub_level }}
